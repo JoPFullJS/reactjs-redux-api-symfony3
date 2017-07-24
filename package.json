@@ -1,9 +1,12 @@
 {
   "name": "react-redux-api",
   "version": "0.1.0",
+  "main": "index.js",
   "private": true,
   "dependencies": {
+    "@ryancavanaugh/webpack": "^1.12.13-alpha",
     "axios": "^0.16.2",
+    "babel-core": "^6.25.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
@@ -17,5 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3"
   }
 }
