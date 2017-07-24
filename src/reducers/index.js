@@ -1,7 +1,7 @@
-import { combineReducers } from redux;
+import { combineReducers } from 'redux';
 
 import interventionReducer from './intervention_reducer';
-import competenceReducer from './competences_reducer';
+import competenceReducer from './competence_reducer';
 
 //import {reducer as form} from 'redux-form';
 

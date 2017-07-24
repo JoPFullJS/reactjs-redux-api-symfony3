@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './component/App';
-import Interventions from './component/interventions';
-import Competences from './component/competences';
+import App from '../components/App';
+import InterventionsList from '../pages/InterventionsList';
+import CompetencesList from '../pages/CompetencesList';
 
 export default (
 	<Route path="/" component={App}>
-		<IndexRoute componet={Interventions} />
-		<Route path="interventions" component={Interventions} />
-		<Route path="competences" componente={Competences} />
+		<IndexRoute component={InterventionsList} />
+		<Route path="interventions" component={InterventionsList} />
+		<Route path="competences" component={CompetencesList} />
 	</Route>
 );

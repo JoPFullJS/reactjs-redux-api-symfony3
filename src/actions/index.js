@@ -2,10 +2,13 @@
 import axios from 'axios';
 
 //Liste des actions
-import * from '../constants/actionTypes';
+import {
+	FETCH_INTERVENTIONS,FETCH_INTERVENTIONS_SUCCESS,FETCH_INTERVENTIONS_FAILURE,
+	FETCH_COMPETENCES,FETCH_COMPETENCES_SUCCESS,FETCH_COMPETENCES_FAILURE
+	} from '../constants/actionTypes';
 
 // Point d'entré de notre API
-const ROOT_URI = 'http://localhost:3000';
+const ROOT_URI = 'http://127.0.0.1:8000';
 
 /*--------  Listes des action du domaine d'intervention -------------*/
 

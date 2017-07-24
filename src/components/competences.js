@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import * as actions from '../actions/index';
 
 class Competences extends Component {
 	
@@ -8,20 +10,19 @@ class Competences extends Component {
 	}
 
 	renderCompetences(competences) {
-		return competences.map((competence) => {
-			return {
-				<div>
-					<h3>{competence.titre}</h3>
-					<p>{competence.description}</p>
-				</div>
-			};
+		return ((competence) => {
+			return ( 
+				<li key={competence.id}>
+					<p>{competence.titre}</p>
+				</li>
+			);
 		});
 	}
 
 	render() {
-		const { competences, error, loding } = this.props.competencesList;
+		const { competences, error, loading } = `${this.props.competencesList}`;
 
-		if(loding) {
+		if(loading) {
 			return <div className="interventions">Loading...</div>
 		}
 		else if(error) {
@@ -30,10 +31,18 @@ class Competences extends Component {
 		return (
 			<div>
 				<h2>Divers Competences</h2>
-				{this.renderCompetences(competences)}
+				<ul>
+					{this.renderCompetences(competences)}
+				</ul>
 			</div>
 		);
 	}
 }
 
-export default Competences;
+function mapStateToProps(state) {
+	return{
+	 	competencesList: state.competencesList
+	}
+}
+
+export default connect(mapStateToProps,actions)(Competences);

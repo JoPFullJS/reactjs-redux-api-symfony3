@@ -1,39 +1,53 @@
+'use strict';
 import React, { Component } from 'react';
 //import { Link } from 'react-router';
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+
+
+import {fetchInterventions} from '../actions/index';
+
+import {getInterventions} from '../reducers/intervention_reducer'
 
 class Interventions extends Component {
 	
-	ComponentWillMount() {
-		this.props.fetchInterventions();
+	componentWillMount() {
+		this.props.listActions;
 	}
 
-	renderCompetences(interventions) {
-		return interventions.map((intervention) => {
-			return {
-				<div>
-					<h3>{intervention.nom}</h3>
-					<p>{intervention.description}</p>
+	renderInterventions(interventions) {
+		interventions.map(interventions => {
+			return ( 
+				<div  key={interventions.id}>
+					<h3>{interventions.nom}</h3>
+					<p>{interventions.description}</p>
 				</div>
-			};
+			);
 		});
 	}
 
 	render() {
-		const { interventions, error, loding } = this.props.interventionsList;
+		const interventions = this.props.interventionsList;
 
-		if(loding) {
-			return <div className="interventions">Loading...</div>
-		}
-		else if(error) {
-			return <div className="alert">Error : {error}</div>
-		}
 		return (
 			<div>
-				<h2>Divers Competences</h2>
+				<h2>Divers Interventions</h2>
 				{this.renderInterventions(interventions)}
 			</div>
 		);
+	};
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    listActions: bindActionCreators(fetchInterventions, dispatch)
+  }
+}
+
+function mapStateToProps(state) {
+	return{
+	 	interventionsList: state.getInterventions
 	}
 }
 
-export default Interventions;
+export default connect(mapStateToProps,mapDispatchToProps)(Interventions);

@@ -1,5 +1,3 @@
-//Asyncrone request and Promise based HTTP client for the browser
-import axios from 'axios';
 
 //Liste des Interventins 
 export const FETCH_INTERVENTIONS = 'FETCH_INTERVENTIONS';
