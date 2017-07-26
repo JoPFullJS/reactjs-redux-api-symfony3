@@ -1,12 +1,34 @@
-import { connect } from 'react-redux';
-import * as actions from '../actions/index';
+import React, {Component} from 'react'
+import {connect} from 'react-redux';
+import getCompetences from '../actions/getCompetences';
+import { CompetencesList } from '../components';
 
-import Competences from '../components/Competences';
+const mapStateToProps = (state) => {
 
-function mapStateToProps(state) {
-	return{
-	 	competencesList: state.competencesList
-	}
+  return {
+    interventionList: state.interventionList,
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCompetences: () => {dispatch(getCompetences())},
+  }
+};
+
+class CompetencesListContainer extends Component {
+
+  componentDidMount(){
+    this.props.getInterventions();
+  }
+
+
+  render() {
+    const { interventionList } = this.props;
+
+      return (
+      	<CompetencesList interventionList={interventionList} />
+  	);
+  }
 }
-
-export default connect(mapStateToProps,actions)(Competences);
+export default connect(mapStateToProps, mapDispatchToProps)(CompetencesListContainer);

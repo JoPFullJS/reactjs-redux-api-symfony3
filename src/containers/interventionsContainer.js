@@ -1,12 +1,34 @@
-import { connect } from 'react-redux';
-import * as actions from '../actions/index';
+import React, {Component} from 'react'
+import {connect} from 'react-redux';
+import getInterventions from '../actions/getInterventions';
+import { InterventionsList } from '../components';
 
-import Interventions from '../components/Interventions';
+const mapStateToProps = (state) => {
 
-function mapStateToProps(state) {
-	return{
-	 	interventionsList: state.interventionsList
-	}
+  return {
+    interventionList: state.interventionList,
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getInterventions: () => {dispatch(getInterventions())},
+  }
+};
+
+class InterventionsListContainer extends Component {
+
+  componentDidMount(){
+    this.props.getInterventions();
+  }
+
+
+  render() {
+    const { interventionList } = this.props;
+
+      return (
+      	<InterventionsList interventionList={interventionList} />
+  	);
+  }
 }
-
-export default connect(mapStateToProps,actions)(Interventions);
+export default connect(mapStateToProps, mapDispatchToProps)(InterventionsListContainer);
