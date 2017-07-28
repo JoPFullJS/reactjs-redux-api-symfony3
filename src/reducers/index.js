@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 
-import interventionReducer from './intervention_reducer';
-import competencesReducer from './competence_reducer';
+import interventionReducer from './interventionReducer';
+import competencesReducer from './competenceReducer';
 
 //import {reducer as form} from 'redux-form';
 
 const rootReducer = combineReducers({
 	intervention:interventionReducer,
-	competence:competenceReducer
+	competence:competencesReducer
 });
 
 export default rootReducer;
